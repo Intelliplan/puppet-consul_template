@@ -16,7 +16,7 @@
 define consul_template::template (
   $source,
   $destination,
-  $command,
+  $command = undef,
 ) {
 
   concat::fragment {"template-${name}":
