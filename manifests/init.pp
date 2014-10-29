@@ -31,9 +31,7 @@ class consul_template (
   $consul_host = '127.0.0.1',
   $consul_port = '8500',
 ) {
-
   include consul_template::package
   include consul_template::config
   include consul_template::service
-
 }
