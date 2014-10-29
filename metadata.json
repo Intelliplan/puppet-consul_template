@@ -1,0 +1,14 @@
+{
+  "name": "Intelliplan-consul_template",
+  "version": "0.0.1",
+  "author": "Kris Buytaert <kris.buytaert@inuits.eu>",
+  "summary": "@TODO: Add a summary here Kris",
+  "license": "Apache License Version 2.0",
+  "source": "https://github.com/Intelliplan/puppet-consul_template",
+  "project_page": "https://github.com/Intelliplan/puppet-consul_template",
+  "issues_url": "https://github.com/Intelliplan/puppet-consul_template/issues",
+  "tags": [ "consul" ],
+  "dependencies": [
+   { "name": "puppetlabs/concat" }
+  ]
+}
