@@ -1,3 +1,8 @@
+# == Class: consul_template::config
+#
+# Configures consul_template:
+# Creates required directories and initial configuration file.
+#
 class consul_template::config {
 
 
@@ -10,14 +15,14 @@ class consul_template::config {
 
 
   concat { '/etc/consul-template/consul-template.hcl':
-    group   => '0',
-    mode    => '644',
-    owner   => '0',
+    group => '0',
+    mode  => '0644',
+    owner => '0',
   }
 
   concat::fragment {'header':
-    target => '/etc/consul-template/consul-template.hcl',
-    order  => 0,
+    target  => '/etc/consul-template/consul-template.hcl',
+    order   => 0,
     content => template('consul_template/consul-template.hcl.header.erb'),
   }
 

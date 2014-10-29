@@ -1,6 +1,8 @@
 template {
-  source = "<%= @source %>"
-  destination = "<%= @destination %>"
-  command =  "<%= @command %>"
+  source = "<%= @source %>
+  destination = "<%= @destination %>
+<% if @command -%>
+  command =  "<%= @command %>
+<% end -%>
 }
 

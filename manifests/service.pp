@@ -1,3 +1,7 @@
+# == Class: consul_template::service
+#
+# Creates an init script and starts the service.
+#
 class consul_template::service {
 
   file {'/etc/init.d/consul-template':
@@ -11,7 +15,7 @@ class consul_template::service {
 
   service { 'consul-template':
     ensure  => 'running',
-    enable  => 'true',
+    enable  => true,
     require => File['/etc/init.d/consul-template'],
   }
 
