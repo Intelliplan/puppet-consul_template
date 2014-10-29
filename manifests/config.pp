@@ -1,3 +1,8 @@
+# == Class: consul_template::config
+#
+# Configures consul_template:
+# Creates required directories and initial configuration file.
+#
 class consul_template::config {
 
 
