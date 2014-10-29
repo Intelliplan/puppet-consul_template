@@ -5,24 +5,22 @@
 # === Parameters:
 #
 # [*source*]:
-#  Template source to add to the consul-template configuration
+#   Template source to add to the consul-template configuration
 #
 # [*destination*]:
-#  Template destination to add to the consul-template configuration
+#   Template destination to add to the consul-template configuration
 #
 # [*command*]:
-#  Optional command to run when the template is updated. Defaults to undefined.
+#   Optional command to run when the template is updated. Defaults to undefined.
 #
 define consul_template::template (
-  $source,
-  $destination,
   $command = undef,
+  $destination,
+  $source,
 ) {
-
   concat::fragment {"template-${name}":
-    target  => '/etc/consul-template/consul-template.hcl',
-    order   => 10,
     content => template('consul_template/consul-template.hcl.snippet.erb'),
+    order   => 10,
+    target  => '/etc/consul-template/consul-template.hcl',
   }
-
 }
