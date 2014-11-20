@@ -17,7 +17,7 @@ Usage:
       consul_template::template {'nginx':
           source      => '/etc/consul-template/nginx.conf.ctmpl',
           destination => '/tmp/nginx-snippet.conf',
-          command     => '/etc/init.d/nginx restart',
+          command     => '/etc/init.d/nginx reload',
       }
 
 
