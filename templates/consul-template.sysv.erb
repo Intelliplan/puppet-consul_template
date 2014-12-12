@@ -19,16 +19,14 @@ PATH=/sbin:/usr/sbin:/bin:/usr/bin
 export PATH
 
 name=consul-template
-program=/usr/local/bin/consul-template
-args=-config\ /etc/consul-template/consul-template.hcl
+program= <%= scope.lookupvar('consul_template::bin_dir') %>/consul-template
+args=-config\ /etc/consul-template
 pidfile="/var/run/$name.pid"
 
 [ -r /etc/default/$name ] && . /etc/default/$name
 [ -r /etc/sysconfig/$name ] && . /etc/sysconfig/$name
 
 start() {
-
-
   # Run the program!
   chroot --userspec root:root / sh -c "
     cd /
@@ -89,7 +87,6 @@ force_stop() {
     status && kill -KILL `cat "$pidfile"`
   fi
 }
-
 
 case "$1" in
   start)

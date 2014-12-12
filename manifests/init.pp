@@ -28,10 +28,19 @@
 # Copyright 2014 Kris Buytaert, unless otherwise noted.
 #
 class consul_template (
-  $consul_host = '127.0.0.1',
-  $consul_port = '8500',
-) {
-  include consul_template::package
-  include consul_template::config
-  include consul_template::service
+  $consul_host          = '127.0.0.1',
+  $consul_port          = '8500',
+  $bin_dir              = '/usr/local/bin',
+  $arch                 = $consul_template::params::arch,
+  $version              = $consul_template::params::version,
+  $install_method       = $consul_template::params::install_method,
+  $download_url         = "https://github.com/hashicorp/consul-template/releases/download/v${version}/consul-template_${version}_linux_${arch}.tar.gz",
+  $download_extract_dir = '/tmp',
+  $package_name         = $consul_template::params::package_name,
+  $package_ensure       = $consul_template::params::package_ensure,
+  $init_style           = $consul_template::params::init_style,
+) inherits consul_template::params {
+  class { 'consul_template::install': } ->
+  class { 'consul_template::config': } ->
+  class { 'consul_template::service': }
 }

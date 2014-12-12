@@ -1,0 +1,15 @@
+# Consul Template Agent (Upstart unit)
+description "Consul Template Agent"
+start on (local-filesystems and net-device-up IFACE!=lo)
+stop on runlevel [06]
+
+env CONSUL_TEMPLATE=<%= scope.lookupvar('consul_template::bin_dir') %>/consul-template
+env ARGS=-config\ /etc/consul-template
+
+script
+    exec $CONSUL_TEMPLATE $ARGS >> /var/log/consul-template 2>&1
+end script
+
+respawn
+respawn limit 10 10
+kill timeout 10
