@@ -7,7 +7,7 @@ env CONSUL_TEMPLATE=<%= scope.lookupvar('consul_template::bin_dir') %>/consul-te
 env ARGS=-config\ /etc/consul-template
 
 script
-    exec $CONSUL_TEMPLATE $ARGS >> /var/log/consul-template 2>&1
+    exec sudo $CONSUL_TEMPLATE $ARGS >> /var/log/consul-template 2>&1
 end script
 
 respawn
