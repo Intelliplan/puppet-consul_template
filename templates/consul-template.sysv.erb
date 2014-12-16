@@ -19,7 +19,7 @@ PATH=/sbin:/usr/sbin:/bin:/usr/bin
 export PATH
 
 name=consul-template
-program= <%= scope.lookupvar('consul_template::bin_dir') %>/consul-template
+program=<%= scope.lookupvar('consul_template::bin_dir') %>/consul-template
 args=-config\ /etc/consul-template
 pidfile="/var/run/$name.pid"
 
