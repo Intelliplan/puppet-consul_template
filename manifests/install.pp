@@ -30,32 +30,4 @@ class consul_template::install {
   else {
     fail("The provided install method ${consul_template::install_method} is invalid")
   }
-
-  if $consul_template::init_style {
-    case $consul_template::init_style {
-      'upstart' : {
-        file { '/etc/init/consul-template.conf':
-          mode    => '0444',
-          owner   => 'root',
-          group   => 'root',
-          content => template('consul_template/consul-template.upstart.erb'),
-        }
-        file { '/etc/init.d/consul-template':
-          ensure => link,
-          target => "/lib/init/upstart-job",
-          owner  => root,
-          group  => root,
-          mode   => 0755,
-        }
-      }
-      'sysv' : {
-        file { '/etc/init.d/consul-template':
-          mode    => '0555',
-          owner   => 'root',
-          group   => 'root',
-          content => template('consul_template/consul-template.sysv.erb')
-        }
-      }
-    }
-  }
 }
