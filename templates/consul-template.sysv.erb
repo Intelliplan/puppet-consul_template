@@ -20,7 +20,7 @@ export PATH
 
 name=consul-template
 program=<%= scope.lookupvar('consul_template::bin_dir') %>/consul-template
-args=-config\ /etc/consul-template
+args=-config\ /etc/consul-template/consul-template.hcl
 pidfile="/var/run/$name.pid"
 
 [ -r /etc/default/$name ] && . /etc/default/$name
