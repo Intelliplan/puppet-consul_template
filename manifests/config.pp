@@ -33,11 +33,19 @@ class consul_template::config {
     }
   }
 
-  file { '/etc/consul-template/':
+  file { '/etc/consul-template':
     ensure => 'directory',
     group  => '0',
     mode   => '0755',
     owner  => '0',
+  }
+
+  file { '/etc/consul-template/templates':
+    ensure  => 'directory',
+    group   => '0',
+    mode    => '0755',
+    owner   => '0',
+    require => File['/etc/consul-template']
   }
 
   concat { '/etc/consul-template/consul-template.hcl':
