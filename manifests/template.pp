@@ -18,6 +18,8 @@ define consul_template::template (
   $destination,
   $source,
 ) {
+  File[$source] ~> Service['consul-template']
+
   concat::fragment {"template-${name}":
     content => template('consul_template/consul-template.hcl.snippet.erb'),
     order   => 10,
