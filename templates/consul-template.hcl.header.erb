@@ -1,2 +1,2 @@
-consul = "<%= scope.lookupvar('consul_template::consul_host') %>:<%= scope.lookupvar('consul_template::consul_port') %>" # token = "abcd1234"
+consul = "<%= scope.lookupvar('consul_template::consul_host') %><% if ! scope.lookupvar('consul_template::consul_host').start_with?('unix://') %>:<%= scope.lookupvar('consul_template::consul_port') %>" # token = "abcd1234"<% end %>
 
