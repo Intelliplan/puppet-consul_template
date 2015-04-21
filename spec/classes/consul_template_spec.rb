@@ -20,6 +20,15 @@ describe 'consul_template', :type => :class do
     }
   end
 
+  describe 'with parameter: consul_host as unix socket' do
+    let (:params) { { :consul_host => 'unix:///path/to/socket' } }
+
+    it { should contain_concat__fragment('header').with(
+        'content' => %r{/path/to/socket\n}
+      )
+    }
+  end
+
   describe 'with parameter: consul_port' do
     let (:params) { { :consul_port => '1111' } }
 
