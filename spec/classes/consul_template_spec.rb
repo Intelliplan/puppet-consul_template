@@ -6,8 +6,9 @@ describe 'consul_template', :type => :class do
 
   describe 'without parameters' do
     it { should create_class('consul_template') }
-    it { should contain_class('consul_template::package') }
     it { should contain_class('consul_template::config') }
+    it { should contain_class('consul_template::install') }
+    it { should contain_class('consul_template::params') }
     it { should contain_class('consul_template::service') }
   end
 
